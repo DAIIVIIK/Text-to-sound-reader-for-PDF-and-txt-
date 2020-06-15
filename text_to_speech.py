@@ -1,4 +1,3 @@
-
 import argparse
 import os
 import sys
@@ -9,9 +8,6 @@ from docx import Document
 from gtts import gTTS
 from playsound import playsound
 from PyPDF2 import PdfFileReader
-
-
-
 
 
 def play_text(text: str):
@@ -27,7 +23,6 @@ def play_text(text: str):
     os.unlink(save_name)
 
 
-
 def read_text(filename: str):
 
     with open(filename, "r+") as f:
@@ -35,9 +30,7 @@ def read_text(filename: str):
         contents = reading.rstrip()
         words = contents.split()
 
-
     play_text(" ".join(words))
-
 
 
 def read_pdf(filename: str):
@@ -54,10 +47,8 @@ def read_pdf(filename: str):
     play_text(str(text, "utf-8"))
 
 
-
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-
 
     ap.add_argument(
         "-t", "--txt", required=False, help="Path to a txt file.",
@@ -76,6 +67,5 @@ if __name__ == "__main__":
         read_pdf(args["pdf"])
     elif not any(args.values()):
         ap.error("No filenames provided.")
-
 
     print("Done!")
